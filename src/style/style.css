@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Tilt Neon', cursive;
+  letter-spacing: .1rem;
 }
 ul, li {
   list-style: none;

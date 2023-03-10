@@ -11,7 +11,11 @@ function PaymentDetails ({targetComponent, targetComponentRef, handleSuccessPage
   }
 
   return<section id="PaymentDetails" ref={componentIndex === targetComponent ? targetComponentRef : null}>
-          <div className="link-history">Home/ Marketplace/</div>
+          <div className="link-history">
+            <span> Home/</span>
+            <span>Marketplace/</span>
+            <span>Payment</span>
+          </div>
           <section className="payment-form-container">
 
             <aside className="payment-wallet-container">

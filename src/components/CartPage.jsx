@@ -8,36 +8,28 @@
 //   barr.style.left = `${newLeft}px`;
 // });
 
-// import { useState } from "react";
 import {products} from "../data/products";
 
 function CartPage({cartItemInState, increaseQuantity, decreaseQuantity, deleteItem, setTargetComponentRight, targetComponent, targetComponentRef}) {
   const componentIndex = 0;
 
-  const handleTransition = () => {
-    const container = document.querySelector(".shop-schedule-wrapper");
+  const handleTransition = (event) => {
     const shop = document.querySelector(".shop-schedule-shop");
     const schedule = document.querySelector(".shop-schedule-schedule");
     const barr = document.querySelector(".barr");
+    let target = event.target;
 
-    if (container && barr && shop && schedule) {
-      container.addEventListener("click", (event) => {
-        let target = event.target;
         if (target === shop) {
           shop.classList.add("activee");
           schedule.classList.remove("activee");
           barr.style.left = "0";
           barr.innerHTML = "Shop";
-        } else if (target === schedule) {
+        } else {
           shop.classList.remove("activee");
           schedule.classList.add("activee");
           barr.style.left = "51%";
           barr.innerHTML = "Scheduled";
         }
-      });
-    } else {
-      console.log("failed");
-    }
   }
 
   const getCartItemId = cartItemInState.map((item) => {
@@ -63,7 +55,7 @@ function CartPage({cartItemInState, increaseQuantity, decreaseQuantity, deleteIt
 
           <div className="shop-schedule-container">
             <div className="shop-schedule-wrapper">
-                <div className="shop-schedule" onClick={() => handleTransition()}>
+                <div className="shop-schedule" onClick={(event) => handleTransition(event)}>
                   <div className="shop-schedule-shop">
                     Shop
                   </div>
@@ -138,9 +130,7 @@ function CartPage({cartItemInState, increaseQuantity, decreaseQuantity, deleteIt
               </div>
             </div>
           </aside>
-        </section>
-
-        
+        </section>     
 }
 
 export default CartPage;
